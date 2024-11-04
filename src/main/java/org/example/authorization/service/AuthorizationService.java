@@ -1,6 +1,7 @@
 package org.example.authorization.service;
 
 import lombok.AllArgsConstructor;
+import org.example.authorization.dto.User;
 import org.example.authorization.enums.Authorities;
 import org.example.authorization.handlers.InvalidCredentials;
 import org.example.authorization.handlers.UnauthorizedUser;
@@ -14,11 +15,11 @@ import java.util.List;
 public class AuthorizationService {
     UserRepository userRepository;
 
-    public List<Authorities> getAuthorities(String user, String password) {
-        if (isEmpty(user) || isEmpty(password)) {
+    public List<Authorities> getAuthorities(User user) {
+        if (isEmpty(user.getUser()) || isEmpty(user.getPassword())) {
             throw new InvalidCredentials("User name or password is empty");
         }
-        List<Authorities> userAuthorities = userRepository.getUserAuthorities(user, password);
+        List<Authorities> userAuthorities = userRepository.getUserAuthorities(user.getUser(), user.getPassword());
         if (isEmpty(userAuthorities)) {
             throw new UnauthorizedUser("Unknown user " + user);
         }
