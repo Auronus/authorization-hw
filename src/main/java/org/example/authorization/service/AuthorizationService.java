@@ -1,5 +1,6 @@
 package org.example.authorization.service;
 
+import lombok.AllArgsConstructor;
 import org.example.authorization.enums.Authorities;
 import org.example.authorization.handlers.InvalidCredentials;
 import org.example.authorization.handlers.UnauthorizedUser;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class AuthorizationService {
     UserRepository userRepository;
 
