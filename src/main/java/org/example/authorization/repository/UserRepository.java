@@ -19,7 +19,7 @@ public class UserRepository {
         System.out.println(user + " - " + password);
 
         Optional<User> optionalUser = users.stream()
-                .filter(x -> user.equals(x.getName()) && password.equals(x.getPassword()))
+                .filter(x -> user.equals(x.getUser()) && password.equals(x.getPassword()))
                 .findFirst();
         if (optionalUser.isPresent()) {
             return optionalUser.get().getAuthoritiesList();

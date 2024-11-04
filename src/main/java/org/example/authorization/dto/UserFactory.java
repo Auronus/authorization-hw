@@ -7,7 +7,7 @@ import java.util.List;
 public class UserFactory {
     public static User createUser(String username, String password, List<Authorities> authorities) {
         return User.builder()
-                .name(username)
+                .user(username)
                 .password(password)
                 .authoritiesList(authorities)
                 .build();
